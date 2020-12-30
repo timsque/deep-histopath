@@ -31,7 +31,7 @@ from deephistopath.wsi.util import Time
 
 BASE_DIR = os.path.join(".", "data")
 # BASE_DIR = os.path.join(os.sep, "Volumes", "BigData", "TUPAC")
-TRAIN_PREFIX = "TUPAC-TR-"
+TRAIN_PREFIX = ""
 SRC_TRAIN_DIR = os.path.join(BASE_DIR, "training_slides")
 SRC_TRAIN_EXT = "svs"
 DEST_TRAIN_SUFFIX = ""  # Example: "train-"
