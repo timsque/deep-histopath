@@ -250,7 +250,7 @@ def generate_top_tile_summaries(tile_sum, np_img, display=True, save_summary=Fal
   summary_title = "Slide %03d Top Tile Summary:" % slide_num
   summary_txt = summary_title + "\n" + summary_stats(tile_sum)
 
-  summary_font = ImageFont.truetype(SUMMARY_TITLE_FONT_PATH, size=SUMMARY_TITLE_TEXT_SIZE)
+  summary_font = ImageFont.load_default() #ImageFont.truetype(SUMMARY_TITLE_FONT_PATH, size=SUMMARY_TITLE_TEXT_SIZE)
   draw.text((5, 5), summary_txt, SUMMARY_TITLE_TEXT_COLOR, font=summary_font)
   draw_orig.text((5, 5), summary_txt, SUMMARY_TITLE_TEXT_COLOR, font=summary_font)
 
@@ -261,7 +261,7 @@ def generate_top_tile_summaries(tile_sum, np_img, display=True, save_summary=Fal
   v_ds_offset = TILE_BORDER_SIZE + 1
   for t in tiles_to_label:
     label = "R%d\nC%d" % (t.r, t.c)
-    font = ImageFont.truetype(FONT_PATH, size=TILE_LABEL_TEXT_SIZE)
+    font = ImageFont.load_default() #ImageFont.truetype(FONT_PATH, size=TILE_LABEL_TEXT_SIZE)
     # drop shadow behind text
     draw.text(((t.c_s + h_ds_offset), (t.r_s + v_ds_offset + z)), label, (0, 0, 0), font=font)
     draw_orig.text(((t.c_s + h_ds_offset), (t.r_s + v_ds_offset + z)), label, (0, 0, 0), font=font)
@@ -1436,7 +1436,7 @@ def pil_text(text, w_border=TILE_TEXT_W_BORDER, h_border=TILE_TEXT_H_BORDER, fon
     PIL image representing the text.
   """
 
-  font = ImageFont.truetype(font_path, font_size)
+  font = ImageFont.load_default() #ImageFont.truetype(font_path, font_size)
   x, y = ImageDraw.Draw(Image.new("RGB", (1, 1), background)).textsize(text, font)
   image = Image.new("RGB", (x + 2 * w_border, y + 2 * h_border), background)
   draw = ImageDraw.Draw(image)
