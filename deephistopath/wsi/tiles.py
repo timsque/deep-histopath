@@ -177,7 +177,7 @@ def generate_tile_summaries(tile_sum, np_img, display=True, save_summary=False):
 
   summary_txt = summary_title(tile_sum) + "\n" + summary_stats(tile_sum)
 
-  summary_font = ImageFont.truetype(SUMMARY_TITLE_FONT_PATH, size=SUMMARY_TITLE_TEXT_SIZE)
+  summary_font = ImageFont.load_default() #ImageFont.truetype(SUMMARY_TITLE_FONT_PATH, size=SUMMARY_TITLE_TEXT_SIZE)
   draw.text((5, 5), summary_txt, SUMMARY_TITLE_TEXT_COLOR, font=summary_font)
   draw_orig.text((5, 5), summary_txt, SUMMARY_TITLE_TEXT_COLOR, font=summary_font)
 
@@ -186,7 +186,7 @@ def generate_tile_summaries(tile_sum, np_img, display=True, save_summary=False):
     for t in tile_sum.tiles:
       count += 1
       label = "R%d\nC%d" % (t.r, t.c)
-      font = ImageFont.truetype(FONT_PATH, size=TILE_LABEL_TEXT_SIZE)
+      font = ImageFont.load_default() #ImageFont.truetype(FONT_PATH, size=TILE_LABEL_TEXT_SIZE)
       # drop shadow behind text
       draw.text(((t.c_s + 3), (t.r_s + 3 + z)), label, (0, 0, 0), font=font)
       draw_orig.text(((t.c_s + 3), (t.r_s + 3 + z)), label, (0, 0, 0), font=font)
