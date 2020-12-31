@@ -518,8 +518,12 @@ def summary_and_tiles(slide_num, display=True, save_summary=False, save_data=Tru
   generate_tile_summaries(tile_sum, np_img, display=display, save_summary=save_summary)
   generate_top_tile_summaries(tile_sum, np_img, display=display, save_summary=save_summary)
   if save_top_tiles:
-    for tile in tile_sum.top_tiles():
-      tile.save_tile()
+    #modified below to save all tiles above low tissue threshold
+    for tile in tile_sum.tiles_by_tissue_percentage():
+      if tile.tissue_percentage > TISSUE_LOW_THRESH:
+        tile.save_tile()
+    #for tile in tile_sum.top_tiles():
+      #tile.save_tile()
   return tile_sum
 
 
